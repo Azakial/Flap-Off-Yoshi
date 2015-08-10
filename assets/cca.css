@@ -5,7 +5,9 @@ body {
     -o-background-size: cover;
     margin: 0;
     /*width: 100%;*/
-    background: url('garden.png') repeat;
+    background: url('garden.png');
+    width: 100%;
+    length: 100%;
 }
 #header {
     background-size: cover;
