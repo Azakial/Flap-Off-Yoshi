@@ -1,0 +1,32 @@
+h1 {
+    color: darkblue;
+
+}
+
+header {
+    padding-top: 20%;
+    padding-left: 60%;
+    padding-bottom: 20%;
+}
+#cca {
+    padding-top: 20%;
+    padding-left: 60%;
+    padding-bottom: 20%;
+}
+
+body {
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    margin: 0;
+    /*width: 100%;*/
+    background: url('garden.png');
+    width: 100%;
+    length: 100%;
+
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+    cell-padding: 1%
+}

@@ -7,8 +7,32 @@ var score = 0;
 var player;
 var labelScore;
 var pipes = [];
+var accSound;
 
 function preload() {
+
+
+    jQuery("#greeting-form").on("submit", function(event_details) {
+        alert("Submitted");
+        event_details.preventDefault();
+    });
+
+    jQuery("#greeting-form").on("submit", function(event_details) {
+        var greeting = "Hello ";
+        var name = jQuery("#fullName").val();
+        var greeting_message = greeting + name;
+        alert(greeting_message);
+        event_details.preventDefault();
+    });
+
+    jQuery("#greeting-form").on("submit", function(event_details) {
+        var greeting = "Hello ";
+        var name = jQuery("#fullName").val();
+        var greeting_message = greeting + name;
+        jQuery("#greeting-form").hide();                                1
+        jQuery("#greeting").append("<p>" + greeting_message + "</p>");  2
+        event_details.preventDefault();
+    });
 
     game.load.image("playerImg","../assets/pysprite.png");
     game.load.image("playerImgrev","../assets/pyspriterev.png");
@@ -34,10 +58,18 @@ function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
 
-    player = game.add.sprite(10, 325, "playerImg");
+
+    accSound = game.sound.play("acc");
+// had to assign accsound var as playTrack wasn't getting called for 8.3 sec
+    trackInterval = 8.3;
+    game.time.events
+        .loop(trackInterval * Phaser.Timer.SECOND,
+        playTrack);
+
+    player = game.add.sprite(50, 300, "playerImg");
 
     game.physics.arcade.enable(player);
-    player.body.velocity.x = 100;
+    player.body.velocity.x = 0;
     player.body.gravity.y = 400;
 
     game.input.keyboard
@@ -55,7 +87,7 @@ function create() {
         .onDown.add(moveLeft);
 
 
-    pipeInterval = 1.75;
+    pipeInterval = 3;
     game.time.events
         .loop(pipeInterval * Phaser.Timer.SECOND,
         generatePipe);
@@ -68,21 +100,33 @@ function moveRight(){
     player.destroy();
 player.x+=10 ;
     player = game.add.sprite(player.x,player.y, "playerImg");
-
+    game.physics.arcade.enable(player);
+    player.body.gravity.y = 500;
+    player.body.velocity.x = 100
 }
 function moveLeft(){
 player.destroy ();
     player.x-=10;
     player = game.add.sprite(player.x,player.y, "playerImgrev");
-
+    game.physics.arcade.enable(player);
+    player.body.gravity.y = 500;
+    player.body.velocity.x = -100
 }
 
 function playerJump() {
-    player.body.velocity.y = -200;
+    player.body.velocity.y = -400;
     game.sound.play("jump");
+    player.body.gravity.y = 500;
+}
+function playTrack(){
+    console.log("playTrack");
+    accSound = game.sound.play("acc");
 }
 
-
+function stopTrack() {
+    //game.sound.remove(accSound);
+    accSound.stop();
+}
 
 function changeScore(){
     score = score + 1;
@@ -93,9 +137,9 @@ function changeScore(){
 
 function generatePipe() {
     // calculate a random position for the gap
-    var gap = game.rnd.integerInRange(1 ,4);
+    var gap = game.rnd.integerInRange(1 ,3);
     // generate the pipes, except where the gap should be
-    for (var count=0; count<4; count++) {
+    for (var count=0; count<3; count++) {
         if (count != gap && count != gap+1) {
             addPipeBlock(800,350-count*50);
 
@@ -121,10 +165,34 @@ function update() {
         .overlap(player,
         pipes,
         gameOver);
-  
+
+
+   if (player.y > 330) {
+       player.y = 330;
+   player.body.gravity.y = 0;
+       player.body.velocity.y = 0;
+       player.body.velocity.x =  0;
+   }
+
+    if (player.y < 100) {
+        player.y = 100;
+        player.body.velocity.y = 0;
+    }
+
+
 }
-function gameOver(){
+function gameOver() {
+    stopTrack();
+
     game.sound.play("trum");
+
+
     game.destroy();
+
+    setTimeout(reloadGame, 4000);
+}
+
+function reloadGame() {
+
     location.reload();
 }
