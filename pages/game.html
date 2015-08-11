@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <link rel="stylesheet" href="../lib/bootstrap.css"/>
-
+    <link rel="shortcut icon" href="../assets/pysprite.png" type="favicon/ico" />
 
 
     <link rel="stylesheet" href="../assets/MYSTYLE.css">
@@ -22,8 +22,9 @@
 <div class ="row">
     <div class="col-xs-8">
     <p>   The Brainchild of Az, it is a marvelous game to vent your frustrations on the
-        helpless Yoshi who has suddenly has learned how to fly and defy physics to a enchanting soundtrack.
+        helpless Yoshi who has suddenly has learned how to fly and defy physics to an enchanting soundtrack.
     </p>
+        <br/>
     </div>
 </div>
 <div class ="row">
@@ -32,43 +33,34 @@
 </div>
 
      </div>
-        <div class="col-md-2">
+        <div class="col-md-4">
+            <div class="well">
 
-
-
-            <div id="greeting">
-                <form id="greeting-form" class="form-inline">
-                    <div class="form-group">
-                        <label for="fullName">What's your name?</label>
-                        <input type="text" id="fullName"
-                               name="fullName" class="form-control" placeholder="Yoshi">
-
-                        <label for="email">What's your email?</label>
-                        <input type="email" id="email" class="form-control"
-                               name="email" placeholder="Yoshi@WatEmail5ever.com">
-
-                        <input type="hidden" id="score" name="score" value="0">
-
-
-
-                    </div>
-                    <button class="btn btn-default" type="submit">OK</button>
-                </form>
-            </div>
-
-
-            <p>THERE ARE NO HIGHSCORES:</p>
-            <ul>
-                <li class="gold">no</li>
-                <li class="score">no</li>
-                <li class="score">no</li>
-            </ul>
+                <p><h3>The highest scorers are:</h3></p>
+                <ul id="scoreBoard">
+                </ul>
         </div>
 </div>
 
 
 
+<div id="greeting">
+    <form id="greeting-form" method="post" action="/score">
+        <div class="form-group">
+            <label for="fullName">What's your name?</label>
+            <input type="text" id="fullName"
+                   name="fullName" class="form-control" placeholder="Yoshi" required>
 
+            <label for="email">What's your email?</label>
+            <input type="email" id="email" class="form-control"
+                   name="email" placeholder="Yoshi@WatEmail5ever.com">
+
+            <input type="hidden" id="score" name="score" value="0">
+            <button class="btn btn-default" type="submit">OK</button>
+   </div> </form>
+
+
+        </div>
 
 </body>
 </html>

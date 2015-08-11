@@ -1,8 +1,25 @@
 h1 {
     color: darkblue;
-
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-family: "Comic Sans MS";
+    text-align: center;
 }
 
+
+#greeting {
+    position: absolute;
+    left: 70%;
+    top: 60%;
+    background: #fff;
+    width: 350px;
+    height: 200px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 20px;
+    display: none;
+    font-family: "Comic Sans MS";
+}
 header {
     padding-top: 20%;
     padding-left: 60%;
@@ -14,19 +31,32 @@ header {
     padding-bottom: 20%;
 }
 
+
+
 body {
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+
     margin: 0;
     /*width: 100%;*/
-    background: url('garden.png');
+    background: url('pretty.png');
+    background-size: 100% 120%;
     width: 100%;
     length: 100%;
+    background-repeat: no-repeat
+
+
+    text-align: center;
+    font-family: "Comic Sans MS";
 
     padding-top: 1%;
-    padding-left: 1%;
+    padding-left: 3%;
     padding-bottom: 1%;
+    padding-right: 3%;
     cell-padding: 1%
+
+}
+p {
+    font-family: "Comic Sans MS";
+font-size: 18px;
+
+
 }

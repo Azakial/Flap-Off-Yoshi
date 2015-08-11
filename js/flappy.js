@@ -12,26 +12,22 @@ var accSound;
 function preload() {
 
 
-    jQuery("#greeting-form").on("submit", function(event_details) {
-        alert("Submitted");
-        event_details.preventDefault();
-    });
+
+
 
     jQuery("#greeting-form").on("submit", function(event_details) {
         var greeting = "Hello ";
         var name = jQuery("#fullName").val();
-        var greeting_message = greeting + name;
-        alert(greeting_message);
+        var greeting_message = greeting + name + " Thank you for your email. We will now spam you to hell.";
+        jQuery("#greeting-form").hide();
+        jQuery("#greeting").append("<p>" + greeting_message + "</p>");
         event_details.preventDefault();
-    });
 
-    jQuery("#greeting-form").on("submit", function(event_details) {
-        var greeting = "Hello ";
-        var name = jQuery("#fullName").val();
-        var greeting_message = greeting + name;
-        jQuery("#greeting-form").hide();                                1
-        jQuery("#greeting").append("<p>" + greeting_message + "</p>");  2
-        event_details.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/score",
+            data: $( "#greeting-form" ).serialize()
+        });
     });
 
     game.load.image("playerImg","../assets/pysprite.png");
@@ -93,7 +89,15 @@ function create() {
         generatePipe);
 
     generatePipe();
+
+
+
+
+
 }
+
+
+
 
 
 function moveRight(){
@@ -160,6 +164,36 @@ function generatePipe() {
 
 
 
+
+
+
+function gameOver() {
+    stopTrack();
+
+    game.sound.play("trum");
+
+    $("#score").val(score.toString());
+    $("#greeting").show();
+
+    game.destroy();
+
+    setTimeout(reloadGame, 4000);
+}
+
+function reloadGame() {
+
+game.stage.setBackgroundColor("#00000");
+    game.add.text(200, 130, "PLay Again?");
+
+   //location.reload();
+
+}
+
+
+
+
+
+
 function update() {
     game.physics.arcade
         .overlap(player,
@@ -181,18 +215,30 @@ function update() {
 
 
 }
-function gameOver() {
-    stopTrack();
-
-    game.sound.play("trum");
 
 
-    game.destroy();
 
-    setTimeout(reloadGame, 4000);
-}
 
-function reloadGame() {
 
-    location.reload();
-}
+$.get("/score", function(scores){
+    console.log("Data: ",scores);
+});
+
+
+
+
+$.get("/score", function(scores){
+    scores.sort(function (scoreA, scoreB){
+        var difference = scoreB.score - scoreA.score;
+        return difference;
+    });
+    for (var i = 0; i < scores.length; i++) {
+        $("#scoreBoard").append(
+            "<li>" +
+            scores[i].name + ": " + scores[i].score +
+            "</li>");
+    }
+});
+
+
+
