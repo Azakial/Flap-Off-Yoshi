@@ -21,6 +21,9 @@ var Starmove = false;
 var StarTrack;
 var gravity = 500;
 
+//var restart;
+//var mute = false
+//var pause = false
 
 
 
@@ -102,17 +105,20 @@ function create(){
     game.add.text(30, 10, "FLAP OFF YOSHI", {font: "30px Comic Sans MS", fill: "#FFFFFF"});
     labelScore = game.add.text(60, 440, "0");
 
-    game.add.image(200, 430, "restart");
+  // restart = game.add.image(200, 430, "restart");
 
-    game.add.image(720, 430, "mute");
-    game.add.image(640, 430, "sound");
-    game.add.image(560, 430, "pause");
-    game.add.image(480, 430, "play");
+// game.add.image(720, 430, "mute");
+ //  game.add.image(640, 430, "sound");
+ //   game.add.image(560, 430, "pause");
+ //   game.add.image(480, 430, "play");
 //BLAZE IT 420 - well I would if 420px down looked goods in game... maybe get a hidden image which reverse images the CANVAS
     //yessssssssss
 
 
     player = game.add.sprite(50, 300, "playerImg");
+
+
+
 
 }
 
@@ -124,7 +130,7 @@ function create(){
 function start() {
     // set the background colour of the scene
 
-
+    game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.remove(start);
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -136,7 +142,8 @@ function start() {
 
 // had to assign accsound var as playTrack wasn't getting called for 8.3 sec
 
-
+restart.inputEnabled=true
+   restart.evens.outputDown.add()
 
 
 
