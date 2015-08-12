@@ -21,6 +21,9 @@ var Starmove = false;
 var StarTrack;
 var gravity = 500;
 
+
+
+
 function preload() {
 
 
@@ -67,24 +70,10 @@ function preload() {
     game.load.audio("startrack", "../assets/star power.mp3");
 }
 
-function create() {
-    // set the background colour of the scene
-    game.stage.setBackgroundColor("#FF99CC");
-    game.add.image(0, 0, "backgImg");
-    game.add.text(30, 10, "FLAP OFF YOSHI", {font: "30px Comic Sans MS", fill: "#FFFFFF"});
-    labelScore = game.add.text(60, 440, "0");
 
-    game.add.image(200, 430, "restart");
+function create(){
 
-    game.add.image(720, 430, "mute");
-    game.add.image(640, 430, "sound");
-    game.add.image(560, 430, "pause");
-    game.add.image(480, 430, "play");
-//BLAZE IT 420 - well I would if 420px down looked goods in game... maybe get a hidden image which reverse images the CANVAS
-    //yessssssssss
-
-
-    game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.add(start);
 
 
     $.get("/score", function (scores) {
@@ -107,15 +96,48 @@ function create() {
         }
 
     });
+
+
+    game.add.image(0, 0, "backgImg");
+    game.add.text(30, 10, "FLAP OFF YOSHI", {font: "30px Comic Sans MS", fill: "#FFFFFF"});
+    labelScore = game.add.text(60, 440, "0");
+
+    game.add.image(200, 430, "restart");
+
+    game.add.image(720, 430, "mute");
+    game.add.image(640, 430, "sound");
+    game.add.image(560, 430, "pause");
+    game.add.image(480, 430, "play");
+//BLAZE IT 420 - well I would if 420px down looked goods in game... maybe get a hidden image which reverse images the CANVAS
+    //yessssssssss
+
+
+    player = game.add.sprite(50, 300, "playerImg");
+
+}
+
+
+
+
+
+
+function start() {
+    // set the background colour of the scene
+
+
+
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+
+
 //all this is supposed to be in create
 
     accSound = game.sound.play("yoshi");
-Starmove = false
+    Starmove = false
 
 // had to assign accsound var as playTrack wasn't getting called for 8.3 sec
 
 
-    player = game.add.sprite(50, 300, "playerImg");
+
 
 
     game.physics.arcade.enable(player);
@@ -194,7 +216,7 @@ function changeScore(value){
 
 
 function generate() {
-    var diceRoll = game.rnd.integerInRange(1, 1);
+    var diceRoll = game.rnd.integerInRange(1, 20);
     if(diceRoll==1) {
         generateStar();
     } else if(diceRoll==2) {
