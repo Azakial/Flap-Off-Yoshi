@@ -142,8 +142,8 @@ function start() {
 
 // had to assign accsound var as playTrack wasn't getting called for 8.3 sec
 
-restart.inputEnabled=true
-   restart.evens.outputDown.add()
+ //restart.inputEnabled=true
+  // restart.evens.outputDown.add()
 
 
 
@@ -223,7 +223,7 @@ function changeScore(value){
 
 
 function generate() {
-    var diceRoll = game.rnd.integerInRange(1, 20);
+    var diceRoll = game.rnd.integerInRange(1,10);
     if(diceRoll==1) {
         generateStar();
     } else if(diceRoll==2) {
@@ -391,6 +391,10 @@ for(var i=stars.length - 1; i>=0; i--){
     }
     });
 }
+
+
+
+
 
 
 }
