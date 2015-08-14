@@ -223,7 +223,7 @@ function changeScore(value){
 
 
 function generate() {
-    var diceRoll = game.rnd.integerInRange(1,10);
+    var diceRoll = game.rnd.integerInRange(1,15);
     if(diceRoll==1) {
         generateStar();
     } else if(diceRoll==2) {
