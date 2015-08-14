@@ -45,32 +45,32 @@ function preload() {
         });
     });
 
-    game.load.image("playerImg","../assets/pysprite.png");
-    game.load.image("playerImgrev","../assets/pyspriterev.png");
+    game.load.image("playerImg","./assets/pysprite.png");
+    game.load.image("playerImgrev","./assets/pyspriterev.png");
 
-    game.load.image("starplayerImg","../assets/starsprite.png");
-    game.load.image("starplayerImgrev","../assets/starspriterev.png");
+    game.load.image("starplayerImg","./assets/starsprite.png");
+    game.load.image("starplayerImgrev","./assets/starspriterev.png");
 
-    game.load.image("backgImg","../assets/Hills.jpg");
-    game.load.image("pipe","../assets/brick.png");
+    game.load.image("backgImg","./assets/Hills.jpg");
+    game.load.image("pipe","./assets/brick.png");
 //stuff for game goes here
 
-    game.load.image("coin","../assets/coin.png");
-    game.load.image("star","../assets/star.png");
-    game.load.image("box","../assets/box.png");
+    game.load.image("coin","./assets/coin.png");
+    game.load.image("star","./assets/star.png");
+    game.load.image("box","./assets/box.png");
 
 
-    game.load.image("sound","../assets/SoundTrue.png");
-    game.load.image("mute","../assets/mute.png");
-    game.load.image("restart","../assets/restart.png");
-    game.load.image("play","../assets/play.png");
-    game.load.image("pause","../assets/pause.png");
+    game.load.image("sound","./assets/SoundTrue.png");
+    game.load.image("mute","./assets/mute.png");
+    game.load.image("restart","./assets/restart.png");
+    game.load.image("play","./assets/play.png");
+    game.load.image("pause","./assets/pause.png");
 
-    game.load.audio("jump", "../assets/jump.mp3");
-    game.load.audio("boof", "../assets/boof.mp3");
-    game.load.audio("yoshi", "../assets/yoshisound.mp3");
-    game.load.audio("trum", "../assets/trumbone.mp3");
-    game.load.audio("startrack", "../assets/star power.mp3");
+    game.load.audio("jump", "./assets/jump.mp3");
+    game.load.audio("boof", "./assets/boof.mp3");
+    game.load.audio("yoshi", "./assets/yoshisound.mp3");
+    game.load.audio("trum", "./assets/trumbone.mp3");
+    game.load.audio("startrack", "./assets/star power.mp3");
 }
 
 
